@@ -181,21 +181,7 @@ void allOff(){
   for(int i = 0; i < GNDS; i++)
     digitalWrite(GNDPINS[i], 0);
 }
-// void drawBoard(){
-//   for(int i = 0; i < ROW; i++){
-//     for(int j = 0; j < COL; j++){
-//       allOff();
-//       //delayMicroseconds(50);
-//       if(board_color[i][j][0] == 1){
-//         for(int q = 0; q < RGB+1; q++){
-//           digitalWrite(BOARDPINS[i][j][q], board_color[i][j][q]);
-//           if(q==0)
-//             delayMicroseconds(25);
-//         }
-//       }
-//     }
-//   }
-// }
+
 void drawBoard(){
   for(int i = ROW; i >= 0; i--){
     for(int j = COL; j >= 0; j--){
@@ -214,28 +200,7 @@ void drawBoard(){
     }
   }
 }
-// void drawBoard(){
-//   for(int i = 0; i < ROW; i++){
-//     for(int j = 0; j < COL; j++){
-//       //delayMicroseconds(50);
-//       if(board_color[i][j][0] == 1){
-//         for(int q = RGB+1; q >= 0; q--){
-//           digitalWrite(BOARDPINS[i][j][q], board_color[i][j][q]);
-//           if(q==0){
-//             delayMicroseconds(50);
-//           }
-//         }
-//         delayMicroseconds(50);
-//         for(int q = RGB+1; q >= 0; q--){
-//           digitalWrite(BOARDPINS[i][j][q], 0);
-//           if(q==0){
-//             delayMicroseconds(50);
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
+
 void colorLED(int *rgb, int *pos, bool OnOff){
   for(int i = 0; i < RGB; i++){
     board_color[pos[0]][pos[1]][i+1] = rgb[i];
@@ -902,8 +867,6 @@ int partyScreen(){
       isOnOff = true;
     }
 
-    //allOff();
-    //zeroBoards();
     for(int i = 0; i < ROW; i++){
       for(int j = 0; j < COL; j++){
         randomColorInt = random(0,NUM_COLORS-1);
@@ -972,8 +935,6 @@ void loop() {
   // update draw board
   drawBoard();
   allOff();
-
-
 
   // cancel all button events
   checkButton(false);
